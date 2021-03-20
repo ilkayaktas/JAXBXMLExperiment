@@ -1,8 +1,10 @@
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.util.Arrays;
 
 /**
@@ -16,10 +18,16 @@ public class App {
 
         employee.setHobbies(Arrays.asList("Swimming","Playing", "Karate"));
 
-        jaxbObjectToXML(employee);
+        String result = toXML(employee);
+
+        System.out.println(result);
+
+        employee = fromXML(result);
+
+        System.out.println(employee);
     }
 
-    private static void jaxbObjectToXML(Employee10 employee)
+    private static String toXML(Employee10 employee)
     {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Employee10.class);
@@ -32,8 +40,28 @@ public class App {
 
             //Print XML String to console
             jaxbMarshaller.marshal(employee, new OutputStreamWriter(System.out));
+
+            StringWriter sw = new StringWriter();
+            jaxbMarshaller.marshal(employee, sw);
+
+            return sw.toString();
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    private static Employee10 fromXML(String xml){
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Employee10.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
+            //Print XML String to file
+            Employee10 employee = (Employee10) unmarshaller.unmarshal(new File("employee.xml"));
+            return employee;
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

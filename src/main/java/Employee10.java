@@ -27,6 +27,8 @@ public class Employee10 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @XmlAttribute
+    private Integer some;
     @Setter @Getter private Integer id;
     @Setter @Getter private String firstName;
     @Setter @Getter private String lastName;
@@ -43,6 +45,7 @@ public class Employee10 implements Serializable {
     public Employee10(int id, String fName, String lName, Department department) {
         super();
         this.id = id;
+        this.some = id+1;
         this.firstName = fName;
         this.lastName = lName;
         this.department = department;

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<employee>
+<employee some="2">
     <id>1</id>
     <firstName>Lokesh</firstName>
     <lastName>Gupta</lastName>
-    <department/>
+    <department>
+        <id>101</id>
+        <name>IT</name>
+    </department>
     <hobbies>
         <hobby>Swimming</hobby>
         <hobby>Playing</hobby>
