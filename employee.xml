@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<employee>
+    <id>1</id>
+    <firstName>Lokesh</firstName>
+    <lastName>Gupta</lastName>
+    <department/>
+    <hobbies>
+        <hobby>Swimming</hobby>
+        <hobby>Playing</hobby>
+        <hobby>Karate</hobby>
+    </hobbies>
+</employee>
