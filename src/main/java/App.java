@@ -4,6 +4,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.OutputStreamWriter;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Arrays;
 
@@ -57,7 +58,8 @@ public class App {
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
             //Print XML String to file
-            Employee10 employee = (Employee10) unmarshaller.unmarshal(new File("employee.xml"));
+            StringReader reader = new StringReader(xml);
+            Employee10 employee = (Employee10) unmarshaller.unmarshal(reader);
             return employee;
         } catch (JAXBException e) {
             e.printStackTrace();
